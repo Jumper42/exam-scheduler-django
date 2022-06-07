@@ -1,0 +1,44 @@
+@import url("https://fonts.googleapis.com/css2?family=Lato:wght@400;700&family=Open+Sans:wght@400;700&display=swap");
+
+* {
+	font-family: "Open Sans", "Lato", sans-serif;
+}
+
+.container {
+	padding-top: 80px;
+}
+
+.body {
+	background-color: rgb(241, 251, 255);
+}
+
+.nav-item {
+	margin: 2px 7px;
+	padding: 0px 3px;
+	transition: all 0.6s;
+}
+
+.nav-item:hover {
+	border-radius: 6px;
+	background-color: rgba(0, 0, 0, 0.2);
+}
+
+.last-element {
+	padding-right: 10px;
+}
+
+.messages {
+	list-style: none;
+}
+
+#exam-delete {
+	position: relative;
+	bottom: 55px;
+	left: 15px;
+	color: red;
+}
+
+
+#duration{
+	padding-left: 30px;
+}

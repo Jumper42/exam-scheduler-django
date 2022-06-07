@@ -1,0 +1,13 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Delete Confirmetion{% endblock %}
+{% block content %}
+<div class="container card mt-5 p-5">
+    <form method="post" class="text-center">
+        {% csrf_token %}
+        <h3>Are you sure you want to delete "{{ object }} - {{object.unit}} - {{object.exam_type}}" ?</h3>
+        {{ form }}  
+        <input type="submit" value="Delete" class="btn btn-danger mt-2 mb-0">
+    </form>
+</div>
+{% endblock %}

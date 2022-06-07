@@ -1,0 +1,22 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Buildings{% endblock %}
+{% block links %}
+<link rel="stylesheet" href="{% static 'university/building_list.css' %}">
+{% endblock %}
+{% block content %}
+<div class="container">
+    <h1 class="text-center m-3">Buildings</h1>
+    {% for building in buildings %}
+    <a href="{{building.get_absolute_url}}">
+      <div class="card m-5">
+        <img class="card-img-top" src="{{building.image.url}}" alt="{{building}}">
+        <div class="card-body">
+          <h4 class="card-title font-weight-bold text-center">{{building}}</h4>
+          <p class="card-text"><span class="font-weight-bold"> Address </span><address>{{building.address}}</address></p>
+        </div>
+      </div>
+    </a>
+    {% endfor %}
+</div>
+{% endblock %}

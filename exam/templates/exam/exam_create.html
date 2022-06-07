@@ -1,0 +1,100 @@
+{% extends "base.html" %} {% load static %} {% block title %} Add Exam {% endblock %} 
+{% block links %}
+<link rel="stylesheet" href="{% static 'exam/exam_create.css' %}" />
+{% endblock %} {% block content %}
+<div class="container">
+	<h1 class="text-center m-4 display-5">Add Exam</h1>
+	<div class="form-area">
+		<form method="POST" novalidate>
+			{% csrf_token %}
+			<div class="form-group">
+				<label for="exam_type">Exam Type</label>
+				<select
+					class="form-select"
+					aria-label="Default select example"
+					name="exam_type"
+				>
+				{% for value, text in exam_types %}
+				<option value="{{value}}">{{text}}</option>
+				{% endfor %}
+				</select>
+			</div>
+			<div class="form-group">
+				<label for="sel1">Select Course</label>
+				<select
+					required
+					id="sel1"
+					onchange="giveSelection(this.value)"
+					class="form-select"
+					name="course"
+				>
+					{% for course in courses %}
+					<option value="{{course.course_name}}">{{course.course_name}}</option>
+					{% endfor %}
+				</select>
+			</div>
+			<div class="form-group">
+				<label for="sel2">Select Unit</label>
+				<select id="sel2" class="form-select" name="unit">
+					{% for course in courses %} 
+						{% for unit in course.unit.all %}
+							<option data-option="{{course.course_name}}" value="{{unit}}">
+								{{unit}}
+							</option>
+						{% endfor %} 
+					{% endfor %}
+				</select>
+			</div>
+			<div class="form-group">
+				<label for="start_date">Exam Date</label>
+				<input type="date" name="start_date" id="start_date" />
+			</div>
+			<div class="form-group">
+				<label for="exam_time">Exam Time</label>
+				<input type="time" name="exam_time" id="exam_time" required/>
+				<div class="invalid-feedback">
+					Please provide a valid city.
+				  </div>
+			</div>
+			<div class="form-group">
+				<label for="duration"> Duration </label>
+				<input type="number" name="duration" id="duration" min="30" step="30" />
+			</div>
+			<div class="form-group">
+				<label for="location">Location</label>
+				<select name="location" id="location" class="form-select">
+					{% for class in classrooms %}
+					<option value="{{class.class_code}}">{{class}}</option>
+					{% endfor %}
+				</select>
+			</div>
+			<button type="submit" class="btn btn-primary">Submit</button>
+		</form>
+	</div>
+	{% if messages %}
+<ul class="messages">
+    {% for message in messages %}
+	    <li{% if message.tags %} class="text-center aa alert alert-{{ message.tags }}"{% endif %} role="alert">
+			{{ message }}
+		</li>
+    {% endfor %}
+</ul>
+{% endif %}
+</div>
+<script>
+	var sel1 = document.querySelector("#sel1");
+	var sel2 = document.querySelector("#sel2");
+	var options2 = sel2.querySelectorAll("option");
+
+	function giveSelection(selValue) {
+		sel2.innerHTML = "";
+		for (var i = 0; i < options2.length; i++) {
+			if (options2[i].dataset.option === selValue) {
+				sel2.appendChild(options2[i]);
+			}
+		}
+	}
+
+	giveSelection(sel1.value);
+</script>
+{% endblock %}

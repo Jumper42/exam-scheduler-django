@@ -1,0 +1,14 @@
+.profile-container{
+    margin-left: 20px;
+    width: 15%;
+    transition: all .7s;
+}
+
+.profile-container:hover{
+    opacity: .7;
+}
+
+.card-deck a{
+    text-decoration: none;
+    color: black;
+}

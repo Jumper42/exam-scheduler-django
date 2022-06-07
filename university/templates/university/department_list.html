@@ -1,0 +1,18 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title %}Departments{% endblock %}
+{% block links %}
+<link rel="stylesheet" href="{% static 'university/department_list.css' %}">
+{% endblock %}
+{% block content %}
+<div class="container">
+    <h1 class="text-center m-5">Departments</h1>
+    {% for department in departments %}
+            <a href="{{department.get_absolute_url}}" class="card w-100 text-center m-4">
+                <div class="card-body">
+                    <h5 class="card-title">{{department}}</h5>
+                </div>
+            </a>
+    {% endfor %}
+</div>
+{% endblock %}

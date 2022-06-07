@@ -1,0 +1,13 @@
+.container a {
+	text-decoration: none;
+	color: black;
+}
+
+.card{
+    transition: all .7s;
+}
+
+.card:hover{
+    opacity: .75;
+}
+

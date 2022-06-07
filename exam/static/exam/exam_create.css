@@ -1,0 +1,11 @@
+.alert-error{
+    color: black;
+    margin-top: 15px;
+    background-color: tomato;
+    opacity: .9;
+    border-radius: 5px;
+}
+
+.container{
+    padding-top: 80px;
+}

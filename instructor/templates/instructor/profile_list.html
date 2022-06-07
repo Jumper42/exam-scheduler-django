@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block title %}Profiles{% endblock  %}
+{% block links %}
+<link rel="stylesheet" href="{% static 'instructor/profile_list.css' %}">
+{% endblock links %}
+{% block content %}
+<div class="container">
+  <h2 class="text-center mt-4 title">Our Instructors ❤️</h2>
+</div>
+<hr>
+<div class="card-deck m-3">
+    {% for instructor in instructors %}
+    <a href="{{instructor.get_absolute_url}}" class="profile-container">
+        <div class="card">
+            <img class="card-img-top" src="{{instructor.profile_image.url}}" alt="Card image cap" >
+            <div class="card-body">
+              <h5 class="card-title">{{instructor.full_name}}</h5>
+              <p class="card-text">{{instructor.department}}</p>
+            </div>
+          </div>
+    </a>
+        {% endfor %}    
+{% endblock  %}

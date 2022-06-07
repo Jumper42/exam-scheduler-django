@@ -1,0 +1,43 @@
+<div class="card-body mt-4 mb-4 shadow rounded bg-white">
+	<h5 class="card-title text-center" id="exam-card-title">
+		{{ exam.course.course_code }} - {{ exam.course }} - {{ exam.exam_type }}
+		Exam
+	</h5>
+	<h6 >
+		<p class="mb-2 float-left">
+		<span class="font-weight-bold">
+			Instructor: </span>{{ exam.course.instructor | capfirst }}
+		</p>
+	</p>
+	</h6>
+	{% if request.user.is_instructor %}
+		{% if request.user.id == exam.course.instructor.id %}
+			<a href="{% url 'exam-delete' exam.id%}" id="exam-delete" class="float-md-right">Delete</a>
+		{% endif %}
+	{% endif %}
+	{% comment %} class="table table-borderless"  {% endcomment %}
+		<table id="exam-table" class="table">  
+			<thead>
+				<tr>
+					<th scope="col">Unit</th>
+					<th scope="col">Start Date</th>
+					<th scope="col">Duration</th>
+					<th scope="col">End Date</th>
+					<th scope="col">Location</th>
+				</tr>
+			</thead>
+			<tbody>
+				<tr>
+					<td>{{ exam.unit }}</td>
+					<td>
+						<time>{{ exam.start_date |date:"D d M Y H:i" }}</time>
+					</td>
+					<td id="duration">{{exam.duration}}</td>
+					<td>
+						<time>{{exam.end_date |date:"D d M Y H:i"}}</time>
+					</td>
+					<td>{{ exam.location }}</td>
+				</tr>
+			</tbody>
+		</table>
+</div>

@@ -1,0 +1,13 @@
+.form{
+    margin-left: 50px;
+}
+
+a, a:visited, a:active, a:link{
+    text-decoration: none;
+    color: black;
+    transition: .4s all;
+}
+
+.card:hover{
+    background-color: rgba(0, 0, 0, .2);
+}

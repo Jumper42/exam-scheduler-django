@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% load static %}
+{% block title%} Exam List {% endblock  %}
+{% block links%} <link rel="stylesheet" href="{% static 'exam/exam_list.css' %}"> {% endblock  %}
+{% block content %}
+
+
+<div class="container">
+    {% if messages %}
+    <ul class="messages">
+        {% for message in messages %}
+        <li{% if message.tags %} class="text-center alert alert-{{ message.tags }}"{% endif %}>{{ message }}</li>
+        {% endfor %}
+    </ul>
+    {% endif %}
+    <h1 class="text-center m-4 display-4">Exams</h1>
+    <form method="POST" class="form border p-3 shadow-lg bg-light text-black">
+        {% csrf_token %}
+        <div class="form-group">
+            <label for="order_by" class="font-weight-bold">Order By</label>
+            <select name="order_by" id="order_by" class="form-select">
+                <option value="start_date" selected>Select Order Method</option>
+                <option value="start_date">Starting Date</option>
+                <option value="-end_date">End Date</option>
+                <option value="unit">Unit</option>
+                <option value="-duration">Duration</option>
+            </select>
+        </div>
+        <div class="form-group">
+            <label for="filter_by" class="font-weight-bold">Filter By Unit</label>
+            <select name="filter_by" id="filter_by" class="form-select">
+                <option value="" selected>Select Unit</option>
+                <option value="1">Formal</option>
+                <option value="2">Secondary</option>
+                <option value="3">Online</option>
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Apply</button>
+    </form>
+    {% if exams %}
+    {% for exam in exams %}
+    {% include 'exam/includes/exam_list_item.html' %}
+    {% endfor %}
+    {% else %}
+    <div class="alert alert-primary mt-4 text-center pt-4" role="alert">
+        <p>No Upcoming Exam</p>
+      </div>
+    {% endif %}
+</div>
+{% endblock  %}

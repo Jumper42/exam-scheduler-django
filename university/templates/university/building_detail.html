@@ -1,0 +1,50 @@
+{% extends "base.html" %}
+{% block content %}
+<div class="container justify-content-center text-center">
+    <header>
+        <h1 class="text-center m-4 display-5">{{building}}</h1>
+        <img src="{{building.image.url}}" width="90%" alt="{{building}}" class="img-fluid rounded shadow">  
+    </header>
+    <section id="departments" class="mt-2">
+        <div class="card shadow mt-4 mb-4"  style="width: 100%;">
+            <div class="card-header bg-primary text-white font-weight-bold text-center">
+              Departments
+            </div>
+            <ul class="list-group list-group-flush">
+                {% for department in building.departments.all %}
+                <li class="list-group-item">
+                    <p class="mb-1"><span class="font-weight-bold"> </span> {{department}} <br></p> 
+                    {% comment %} <span class="font-weight-bold"> Date: </span> {{exam.start_date}}  {% endcomment %}
+                </li>
+                {% endfor %}
+            </ul>
+          </div>
+    </section>  
+    <section id="classes" class="mt-2">
+        <div class="card shadow mt-4 mb-4"  style="width: 100%;">
+            <div class="card-header bg-primary text-white font-weight-bold text-center">
+              Classrooms
+            </div>
+            <table class="table">
+                <thead>
+                  <tr>
+                    <th scope="col">Class Code</th>
+                    <th scope="col">Capacity</th>
+                  </tr>
+                </thead>
+                <tbody>
+                    {% for class in building.classes.all %}
+                        <tr>
+                            <td scope="row">{{class.class_code}}</td>
+                            <td>{{class.capacity}}</td>
+                      </tr>
+                    {% endfor %}
+                </tbody>
+              </table>
+          </div>
+    </section>  
+    <section id="address" class="bg-primary text-black text-white p-1">
+      <h6 class="font-weight-bold mt-2">Address</h6>  <address>{{building.address}}</address>
+    </section>
+</div>
+{% endblock %}

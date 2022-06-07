@@ -1,0 +1,50 @@
+#welcome {
+	background: linear-gradient(to right bottom, #000000, #002b4e);  
+	padding: 6rem 12%;
+	text-align: center;
+	padding-bottom: 250px;
+    width: 100%;
+	color: #e4e4e4;
+	padding-top: 230px;
+}
+
+#welcome header {
+	margin: 3rem auto;
+}
+
+.card-title{
+	font-size: x-large;
+}
+
+#welcome h1 {
+	font-size: 3.75rem;
+	margin: 0 0 0 2rem;
+	width: 10rem;
+	display: inline;
+}
+
+#welcome p {
+	text-align: center;
+	font-size: 1.5rem;
+}
+
+#latest-exams {
+	background-color: white;
+	padding: 2rem;
+	border-radius: 12px;
+	width: 60rem;
+	margin: -6rem auto 2rem auto;
+	box-shadow: 1px 1px 12px rgba(0, 0, 0, 0.4);
+	border: none;
+}
+
+#latest-exams h2 {
+	text-align: center;
+	font-size: 250%;
+}
+
+#latest-exams ul {
+	list-style: none;
+	margin: 0;
+	padding: 0;
+}

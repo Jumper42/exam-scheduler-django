@@ -1,0 +1,46 @@
+{% extends 'base.html' %} {% load static %} {% block title %}Courses {% endblock%} 
+{% block links %}
+<link rel="stylesheet" href="{% static 'university/course_list.css' %}" />
+{% endblock %} {% block content %}
+<div class="container">
+	<h1 class="text-center m-5 display-5">Courses</h1>
+	<form method="POST" class="form border p-3 shadow-lg bg-light text-black">
+		{% csrf_token %}
+		<div class="form-group">
+			<label for="order_by" class="font-weight-bold">Order By</label>
+			<select name="order_by" id="order_by" class="form-select">
+				<option value="course_code" selected>Select </option>
+				<option value="course_name">Course Name</option>
+				<option value="course_code">Course Code</option>
+				<option value="instructor">Instructor</option>
+				<option value="department">Department</option>
+			</select>
+		</div>
+		<button type="submit" class="btn btn-primary">Apply</button>
+	</form>
+	<section id="courses">
+		<div class="card shadow mt-4 mb-2" style="width: 100%">
+			<table class="table table-hover">
+				<thead>
+					<tr>
+						<th scope="col" class="bg-primary text-white">Course Code</th>
+						<th scope="col" class="bg-primary text-white">Course Name</th>
+						<th scope="col" class="bg-primary text-white">Department</th>
+						<th scope="col" class="bg-primary text-white">Instructor</th>
+					</tr>
+				</thead>
+				<tbody>
+					{% for course in courses %}
+					<tr>
+						<td>{{course.course_code}}</td>
+						<td>{{course.course_name}}</td>
+						<td>{{course.department}}</td>
+						<td>{{course.instructor}}</td>
+					</tr>
+					{% endfor %}
+				</tbody>
+			</table>
+		</div>
+	</section>
+</div>
+{% endblock %}
