@@ -29,4 +29,4 @@ Login
 ![Project Preview](./media/preview/8.png)
 
 Reset Password
-![Project Preview](./media/preview/0.png)
+![Project Preview](./media/preview/9.png)
